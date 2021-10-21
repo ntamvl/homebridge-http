@@ -1,7 +1,7 @@
 // Utils
 var _ = require('lodash');
 
-const keyExists = (obj, key) => {
+function keyExists(obj, key) {
     if (!obj || (typeof obj !== "object" && !Array.isArray(obj))) {
         return false;
     }
@@ -28,7 +28,7 @@ const keyExists = (obj, key) => {
     return false;
 };
 
-const nestedObject = (obj, key) => {
+function nestedObject(obj, key) {
     if (!obj || (typeof obj !== "object" && !Array.isArray(obj))) {
         return null;
     }
@@ -55,7 +55,7 @@ const nestedObject = (obj, key) => {
     return null;
 };
 
-const compareStates = (customStatus, stateData) => {
+function compareObjects(customStatus, stateData) {
     var keys = Object.keys(customStatus);
     if (!keys.length) return false;
 
@@ -68,4 +68,4 @@ const compareStates = (customStatus, stateData) => {
 
 exports.nestedObject = nestedObject;
 exports.keyExists = keyExists;
-exports.compareStates = compareStates;
+exports.compareObjects = compareObjects;

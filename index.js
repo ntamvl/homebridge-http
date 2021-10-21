@@ -370,7 +370,7 @@ HttpAccessory.prototype = {
         }
     },
     compareStates: function (customStatus, stateData) {
-        return utils.compareStates(customStatus, stateData);
+        return utils.compareObjects(customStatus, stateData);
     }
 
 };
