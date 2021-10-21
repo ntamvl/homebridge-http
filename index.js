@@ -100,6 +100,8 @@ function HttpAccessory(log, config) {
                     break;
             }
             that.enableSet = true;
+        }, {
+            interval: 3000
         });
 
     }
