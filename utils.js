@@ -66,11 +66,6 @@ function compareObjects(customStatus, stateData) {
     return _.isEqual(customObject, stateObject);
 }
 
-// exports.nestedObject = nestedObject;
-// exports.keyExists = keyExists;
-// exports.compareObjects = compareObjects;
-// module.exports = compareObjects;
-
 module.exports = {
     nestedObject: nestedObject,
     keyExists: keyExists,
