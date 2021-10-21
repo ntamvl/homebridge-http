@@ -16,7 +16,7 @@ npm install -g ntamvl/homebridge-http
 
 OR
 
-sudo npm install -g https://github.com/ntamvl/homebridge-http/archive/refs/tags/0.1.3.tar.gz
+sudo npm install -g https://github.com/ntamvl/homebridge-http/archive/refs/tags/0.1.4.tar.gz
 ```
 
 1. Update your configuration file. See `sample-config-v2.json` in this repository for a sample.
