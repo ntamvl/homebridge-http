@@ -21,6 +21,12 @@ sudo npm install -g https://github.com/ntamvl/homebridge-http/archive/refs/tags/
 
 1. Update your configuration file. See `sample-config-v2.json` in this repository for a sample.
 
+To uninstall:
+```
+sudo npm uninstall -g homebridge-http
+```
+
+
 ## Configuration
 
 This module has recently been updated to support an additional method to read the power state of the device and the brightness level. Specify the `status_url` in your config.json that returns the status of the device as an integer (0 = off, 1 = on).
