@@ -13,9 +13,13 @@ npm install -g homebridge
 2. Install homebridge-http using:
 ```bash
 npm install -g ntamvl/homebridge-http
+
+OR
+
+sudo npm install -g https://github.com/ntamvl/homebridge-http/archive/refs/tags/0.1.1.tar.gz
 ```
 
-3. Update your configuration file. See `sample-config-v2.json` in this repository for a sample.
+1. Update your configuration file. See `sample-config-v2.json` in this repository for a sample.
 
 ## Configuration
 
