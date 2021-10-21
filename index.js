@@ -101,7 +101,7 @@ function HttpAccessory(log, config) {
             }
             that.enableSet = true;
         }, {
-            interval: 3000
+            interval: 5000
         });
 
     }
