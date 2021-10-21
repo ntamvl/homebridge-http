@@ -16,11 +16,13 @@
             "status_url": "https://example-iot.com/api/v1/devices/status?uid=d88d2818-7373-4cea-94d1-4f4670a02baa",
             "status_on": {
                 "light": {
+                    "device": "light",
                     "cmd": "on"
                 }
             },
             "status_off": {
                 "light": {
+                    "device": "light",
                     "cmd": "off"
                 }
             },
