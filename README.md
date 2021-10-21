@@ -1,22 +1,25 @@
-# Seeking New Maintainers
+# Homebridge HTTP
+This repo was folked from https://github.com/rudders/homebridge-http
 
-As I have commitments that don't allow me to progress this module I'm actively seeking contributors to this repo to maintain it. 
+## Seeking New Maintainers
+
+As I have commitments that don't allow me to progress this module I'm actively seeking contributors to this repo to maintain it.
 
 Please let me know if you're interested.
 
-# homebridge-http
+## homebridge-http
 
 Supports https devices on the HomeBridge Platform and provides a readable callback for getting the "On" and brightness level characteristics to Homekit.
 
-# Installation
+## Installation
 
 1. Install homebridge using: npm install -g homebridge
-2. Install homebridge-http using: npm install -g homebridge-http
-3. Update your configuration file. See sample-config.json in this repository for a sample. 
+2. Install homebridge-http using: npm install -g ntamvl/homebridge-http
+3. Update your configuration file. See sample-config.json in this repository for a sample.
 
-# Configuration
+## Configuration
 
-This module has recently been updated to support an additional method to read the power state of the device and the brightness level. Specify the `status_url` in your config.json that returns the status of the device as an integer (0 = off, 1 = on). 
+This module has recently been updated to support an additional method to read the power state of the device and the brightness level. Specify the `status_url` in your config.json that returns the status of the device as an integer (0 = off, 1 = on).
 
 In the latest version you can use custom status responses beyond 0 and 1
 
@@ -59,7 +62,7 @@ Configuration sample:
 		"brightnesslvl_url":  "http://localhost/status/100054",
 		"sendimmediately": "",
 		"username" : "",
-		"password" : ""					    
+		"password" : ""
     },
     {
         "accessory": "Http",
@@ -86,7 +89,3 @@ Configuration sample:
     }
 ]
 ```
-
-# ToDo
-
-Complete documentation and review a number of  forks

@@ -1,6 +1,7 @@
 var Service, Characteristic;
 var request = require("request");
 var pollingtoevent = require("polling-to-event");
+var utils = require("./utils");
 
 
 module.exports = function (homebridge) {
@@ -89,13 +90,13 @@ function HttpAccessory(log, config) {
                 case "Switch":
                     if (that.switchService) {
                         that.switchService.getCharacteristic(Characteristic.On)
-                        .setValue(that.state);
+                            .setValue(that.state);
                     }
                     break;
                 case "Light":
                     if (that.lightbulbService) {
                         that.lightbulbService.getCharacteristic(Characteristic.On)
-                        .setValue(that.state);
+                            .setValue(that.state);
                     }
                     break;
             }
@@ -124,7 +125,7 @@ function HttpAccessory(log, config) {
             if (that.lightbulbService) {
                 that.log(that.service, "received brightness", that.brightnesslvl_url, "level is currently", that.currentlevel);
                 that.lightbulbService.getCharacteristic(Characteristic.Brightness)
-                .setValue(that.currentlevel);
+                    .setValue(that.currentlevel);
             }
             that.enableSet = true;
         });
@@ -135,16 +136,16 @@ HttpAccessory.prototype = {
 
     httpRequest: function (url, body, method, username, password, sendimmediately, callback) {
         request({
-                url: url,
-                body: body,
-                method: method,
-                rejectUnauthorized: false,
-                auth: {
-                    user: username,
-                    pass: password,
-                    sendImmediately: sendimmediately
-                }
-            },
+            url: url,
+            body: body,
+            method: method,
+            rejectUnauthorized: false,
+            auth: {
+                user: username,
+                pass: password,
+                sendImmediately: sendimmediately
+            }
+        },
             function (error, response, body) {
                 callback(error, response, body)
             })
@@ -295,9 +296,9 @@ HttpAccessory.prototype = {
         var informationService = new Service.AccessoryInformation();
 
         informationService
-        .setCharacteristic(Characteristic.Manufacturer, "HTTP Manufacturer")
-        .setCharacteristic(Characteristic.Model, "HTTP Model")
-        .setCharacteristic(Characteristic.SerialNumber, "HTTP Serial Number");
+            .setCharacteristic(Characteristic.Manufacturer, "HTTP Manufacturer")
+            .setCharacteristic(Characteristic.Model, "HTTP Model")
+            .setCharacteristic(Characteristic.SerialNumber, "HTTP Serial Number");
 
         switch (this.service) {
             case "Switch":
@@ -306,22 +307,22 @@ HttpAccessory.prototype = {
                     //Power Polling
                     case "yes":
                         this.switchService
-                        .getCharacteristic(Characteristic.On)
-                        .on("get", this.getPowerState.bind(this))
-                        .on("set", this.setPowerState.bind(this));
+                            .getCharacteristic(Characteristic.On)
+                            .on("get", this.getPowerState.bind(this))
+                            .on("set", this.setPowerState.bind(this));
                         break;
                     case "realtime":
                         this.switchService
-                        .getCharacteristic(Characteristic.On)
-                        .on("get", function (callback) {
-                            callback(null, that.state)
-                        })
-                        .on("set", this.setPowerState.bind(this));
+                            .getCharacteristic(Characteristic.On)
+                            .on("get", function (callback) {
+                                callback(null, that.state)
+                            })
+                            .on("set", this.setPowerState.bind(this));
                         break;
-                    default    :
+                    default:
                         this.switchService
-                        .getCharacteristic(Characteristic.On)
-                        .on("set", this.setPowerState.bind(this));
+                            .getCharacteristic(Characteristic.On)
+                            .on("set", this.setPowerState.bind(this));
                         break;
                 }
                 return [this.switchService];
@@ -329,39 +330,39 @@ HttpAccessory.prototype = {
                 this.lightbulbService = new Service.Lightbulb(this.name);
                 switch (this.switchHandling) {
                     //Power Polling
-                    case "yes" :
+                    case "yes":
                         this.lightbulbService
-                        .getCharacteristic(Characteristic.On)
-                        .on("get", this.getPowerState.bind(this))
-                        .on("set", this.setPowerState.bind(this));
+                            .getCharacteristic(Characteristic.On)
+                            .on("get", this.getPowerState.bind(this))
+                            .on("set", this.setPowerState.bind(this));
                         break;
                     case "realtime":
                         this.lightbulbService
-                        .getCharacteristic(Characteristic.On)
-                        .on("get", function (callback) {
-                            callback(null, that.state)
-                        })
-                        .on("set", this.setPowerState.bind(this));
+                            .getCharacteristic(Characteristic.On)
+                            .on("get", function (callback) {
+                                callback(null, that.state)
+                            })
+                            .on("set", this.setPowerState.bind(this));
                         break;
                     default:
                         this.lightbulbService
-                        .getCharacteristic(Characteristic.On)
-                        .on("set", this.setPowerState.bind(this));
+                            .getCharacteristic(Characteristic.On)
+                            .on("set", this.setPowerState.bind(this));
                         break;
                 }
                 // Brightness Polling
                 if (this.brightnessHandling === "realtime") {
                     this.lightbulbService
-                    .addCharacteristic(new Characteristic.Brightness())
-                    .on("get", function (callback) {
-                        callback(null, that.currentlevel)
-                    })
-                    .on("set", this.setBrightness.bind(this));
+                        .addCharacteristic(new Characteristic.Brightness())
+                        .on("get", function (callback) {
+                            callback(null, that.currentlevel)
+                        })
+                        .on("set", this.setBrightness.bind(this));
                 } else if (this.brightnessHandling === "yes") {
                     this.lightbulbService
-                    .addCharacteristic(new Characteristic.Brightness())
-                    .on("get", this.getBrightness.bind(this))
-                    .on("set", this.setBrightness.bind(this));
+                        .addCharacteristic(new Characteristic.Brightness())
+                        .on("get", this.getBrightness.bind(this))
+                        .on("set", this.setBrightness.bind(this));
                 }
 
                 return [informationService, this.lightbulbService];
@@ -369,15 +370,7 @@ HttpAccessory.prototype = {
         }
     },
     compareStates: function (customStatus, stateData) {
-        var objectsEqual = true;
-        for (var param in customStatus) {
-            if (!stateData.hasOwnProperty(param) || customStatus[param] !== stateData[param]) {
-                objectsEqual = false;
-                break;
-            }
-        }
-        // that.log("Equal", objectsEqual);
-        return objectsEqual;
+        return utils.compareStates(customStatus, stateData);
     }
 
 };

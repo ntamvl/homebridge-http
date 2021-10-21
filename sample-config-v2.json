@@ -1,0 +1,77 @@
+{
+    "bridge": {
+        "name": "Homebridge 4137",
+        "username": "0E:C0:56:5D:41:37",
+        "port": 51882,
+        "pin": "807-19-394"
+    },
+    "accessories": [
+        {
+            "accessory": "Http",
+            "name": "Bed Light",
+            "switchHandling": "realtime",
+            "http_method": "GET",
+            "on_url": "https://example-iot.com/api/v1/devices?uid=d88d2818-7373-4cea-94d1-4f4670a02baa&cmd=on",
+            "off_url": "https://example-iot.com/api/v1/devices?uid=d88d2818-7373-4cea-94d1-4f4670a02baa&cmd=off",
+            "status_url": "https://example-iot.com/api/v1/devices/status?uid=d88d2818-7373-4cea-94d1-4f4670a02baa",
+            "status_on": {
+                "light": {
+                    "cmd": "on"
+                }
+            },
+            "status_off": {
+                "light": {
+                    "cmd": "off"
+                }
+            },
+            "service": "Light"
+        },
+        {
+            "accessory": "Http",
+            "name": "Fan",
+            "switchHandling": "realtime",
+            "http_method": "GET",
+            "on_url": "https://example-iot.com/api/v1/devices?uid=9c7bac1a-a3be-4e09-8f42-dc395b4721c9&cmd=on",
+            "off_url": "https://example-iot.com/api/v1/devices?uid=9c7bac1a-a3be-4e09-8f42-dc395b4721c9&cmd=off",
+            "status_url": "https://example-iot.com/api/v1/devices/status?uid=9c7bac1a-a3be-4e09-8f42-dc395b4721c9",
+            "status_on": {
+                "fan": {
+                    "cmd": "on"
+                }
+            },
+            "status_off": {
+                "fan": {
+                    "cmd": "off"
+                }
+            },
+            "service": "Switch"
+        },
+        {
+            "accessory": "Http",
+            "name": "Air Conditioner",
+            "switchHandling": "realtime",
+            "http_method": "GET",
+            "on_url": "https://example-iot.com/api/v1/devices?uid=cc9fa848-e2cc-44e9-81c1-05b7023bee1d&cmd=on",
+            "off_url": "https://example-iot.com/api/v1/devices?uid=cc9fa848-e2cc-44e9-81c1-05b7023bee1d&cmd=off",
+            "status_url": "https://example-iot.com/api/v1/devices/status?uid=cc9fa848-e2cc-44e9-81c1-05b7023bee1d",
+            "status_on": {
+                "ac": {
+                    "cmd": "on"
+                }
+            },
+            "status_off": {
+                "ac": {
+                    "cmd": "off"
+                }
+            },
+            "service": "Switch"
+        }
+    ],
+    "platforms": [
+        {
+            "name": "Config",
+            "port": 8581,
+            "platform": "config"
+        }
+    ]
+}

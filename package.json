@@ -13,16 +13,21 @@
   "author": {
     "name": "Adrian Rudman"
   },
-  "contributors":[
-  { "name" : "NovaGL"},
-  { "name" : "David Parry"}
-  ], 
+  "contributors": [
+    {
+      "name": "NovaGL"
+    },
+    {
+      "name": "David Parry"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/rudders/homebridge-http.git"
   },
   "dependencies": {
-    "request": "^2.65.0",
-	"polling-to-event": ">=2.0.2"
+    "lodash": "^4.17.21",
+    "polling-to-event": ">=2.0.2",
+    "request": "^2.65.0"
   }
 }
