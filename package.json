@@ -1,6 +1,6 @@
 {
   "name": "homebridge-http",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "http(s) plugin for Homebridge: https://github.com/nfarina/homebridge",
   "license": "ISC",
   "keywords": [
@@ -19,11 +19,14 @@
     },
     {
       "name": "David Parry"
+    },
+    {
+      "name": "Tam Nguyen"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/rudders/homebridge-http.git"
+    "url": "git://github.com/ntamvl/homebridge-http.git"
   },
   "dependencies": {
     "lodash": "^4.17.21",
