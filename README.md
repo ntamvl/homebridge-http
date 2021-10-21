@@ -1,21 +1,21 @@
 # Homebridge HTTP
 This repo was folked from https://github.com/rudders/homebridge-http
 
-## Seeking New Maintainers
-
-As I have commitments that don't allow me to progress this module I'm actively seeking contributors to this repo to maintain it.
-
-Please let me know if you're interested.
-
-## homebridge-http
-
 Supports https devices on the HomeBridge Platform and provides a readable callback for getting the "On" and brightness level characteristics to Homekit.
 
 ## Installation
 
-1. Install homebridge using: npm install -g homebridge
-2. Install homebridge-http using: npm install -g ntamvl/homebridge-http
-3. Update your configuration file. See sample-config.json in this repository for a sample.
+1. Install homebridge using:
+```bash
+npm install -g homebridge
+```
+
+2. Install homebridge-http using:
+```bash
+npm install -g ntamvl/homebridge-http
+```
+
+3. Update your configuration file. See `sample-config-v2.json` in this repository for a sample.
 
 ## Configuration
 
@@ -31,9 +31,9 @@ On and off statuses also support JSON responses. If you need a more complex way 
 Example:
 ```
 "status_on": {
-    "speaker": "ON",
-    "playlist": "Top Hits",
-    "playmode": "PLAY"
+    "light": {
+        "cmd": "off"
+    }
 }
 ```
 Note that the response can contain more properties than what is specified, if all of the properties in the config object have matching properties in the response than it will be considered a match.
