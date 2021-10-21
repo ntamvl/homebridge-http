@@ -3,7 +3,6 @@ var request = require("request");
 var pollingtoevent = require("polling-to-event");
 var utils = require("./utils");
 
-
 module.exports = function (homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
@@ -69,8 +68,8 @@ function HttpAccessory(log, config) {
 
                 // Check to see if custom states are a json object and if so compare to see if either one matches the state response
                 if (responseBody.startsWith("{")) {
-                    statusOn = this.compareStates(customStatusOn, JSON.parse(responseBody));
-                    statusOff = this.compareStates(customStatusOff, JSON.parse(responseBody));
+                    statusOn = utils.compareStates(customStatusOn, JSON.parse(responseBody));
+                    statusOff = utils.compareStates(customStatusOff, JSON.parse(responseBody));
                 } else {
                     statusOn = responseBody.includes(customStatusOn);
                     statusOff = responseBody.includes(customStatusOff);
@@ -214,8 +213,8 @@ HttpAccessory.prototype = {
 
                     // Check to see if custom states are a json object and if so compare to see if either one matches the state response
                     if (responseBody.startsWith("{")) {
-                        statusOn = this.compareStates(customStatusOn, JSON.parse(responseBody));
-                        statusOff = this.compareStates(customStatusOff, JSON.parse(responseBody));
+                        statusOn = utils.compareStates(customStatusOn, JSON.parse(responseBody));
+                        statusOff = utils.compareStates(customStatusOff, JSON.parse(responseBody));
                     } else {
                         statusOn = responseBody.includes(customStatusOn);
                         statusOff = responseBody.includes(customStatusOff);
@@ -369,8 +368,8 @@ HttpAccessory.prototype = {
                 break;
         }
     },
-    compareStates: function (customStatus, stateData) {
-        return utils.compareObjects(customStatus, stateData);
-    }
 
+    // compareStates: function (customStatus, stateData) {
+    //     return utils.compareObjects(customStatus, stateData);
+    // }
 };
